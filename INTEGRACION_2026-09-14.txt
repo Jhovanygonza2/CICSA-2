@@ -1,0 +1,17 @@
+INTEGRACIÓN REALIZADA
+
+Proyecto base: CICASA1.2
+Proyecto fuente de funciones: Pagina de capacitación (2)
+
+Se conservó como prioridad el diseño/estructura del proyecto CICASA1.2.
+
+Funciones integradas:
+- Curso "Prevención y control de incendios" con sus 4 módulos y 16 contenidos.
+- Imagen de portada del curso.
+- Editor de cursos con imagen y video a nivel de módulo.
+- Editor de cursos con imagen y video a nivel de tema.
+- Visualización de esos recursos dentro del lector del trabajador.
+- Persistencia de imágenes/videos mediante el almacenamiento multimedia existente (IndexedDB).
+- Recursos gráficos y un video de la segunda versión incluidos en assets/recursos para futuras asignaciones.
+
+No se sustituyó la navegación ni el diseño principal del proyecto base.

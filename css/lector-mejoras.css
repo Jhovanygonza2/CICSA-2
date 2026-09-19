@@ -1,0 +1,173 @@
+/* Lector: lectura clara y navegación persistente */
+.lector-curso { --texto-blanco:#25343c; --borde-oscuro:#dce3e7; color:#25343c; background:#f3f5f7; overflow:hidden; }
+.lector-curso .lector-contenido-main { background:#f3f5f7; min-height:0; }
+.lector-curso .lector-sidebar { background:#fff; color:#25343c; border-right:1px solid #dce3e7; width:310px; flex-basis:310px; }
+.lector-curso .lector-cabecera,.lector-curso .lector-tabs { background:#fff; }
+.lector-curso .lector-cabecera { min-height:80px; margin:0; padding:18px; border-bottom:1px solid #e5e9ec; }
+.lector-curso .lector-cabecera::before,.lector-curso .lector-sidebar::after { display:none; }
+.lector-curso .lector-titulo,.lector-curso .lector-tab { color:#25343c; }
+.lector-curso .lector-volver { background:#f3f5f7; color:#25343c; border:1px solid #dce3e7; }
+.lector-curso .lector-tabs { padding:8px 18px 0; }
+.lector-curso .lector-tab { padding:14px 0; font-size:13px; }
+.lector-curso .lector-esquema { padding:16px; }
+.lector-curso .lector-buscador { background:#f6f8fa; border:1px solid #dce3e7; margin:0 0 12px; }
+.lector-curso .lector-buscador input { color:#25343c; font-size:13px; }
+.lector-curso .lector-buscador input::placeholder { color:#6a7782; }
+.lector-curso .lector-resumen { color:#65747e; font-size:12px; margin:12px 0 20px; }
+.lector-curso .modulo { border-bottom:1px solid #e5e9ec; padding-bottom:12px; margin-bottom:14px; }
+.lector-curso .modulo-titulo { color:#25343c; background:transparent; padding:8px 0; }
+.lector-curso .modulo-titulo-texto strong { font-size:13px; font-weight:700; line-height:1.5; }
+.lector-curso .modulo-progreso { color:#65747e; }
+.lector-curso .modulo-contenido,.lector-curso .tema-grupo { background:transparent; border:0; }
+.lector-curso .tema-grupo-titulo,.lector-curso .tema-grupo.expandido .tema-grupo-titulo { background:#f4f6f8; color:#46555f; font-size:12px; border-radius:8px; }
+.lector-curso .subtemas-lista { padding:6px 0 0 8px; margin:0; }
+.lector-curso .subtemas-lista .tema,.lector-curso .tema { color:#52616c; font-size:13px; border:0; border-radius:8px; margin:3px 0; padding:12px; line-height:1.5; }
+.lector-curso .subtemas-lista .tema.activo,.lector-curso .tema.activo { background:#fff0ef; color:#a61e24; border-left:3px solid #c62828; }
+.lector-curso .tema:hover { background:#f3f5f7; }
+.lector-curso .tema:focus-visible { outline:2px solid #c62828; outline-offset:2px; }
+.lector-curso [hidden] { display:none !important; }
+.lector-curso .lector-topbar { background:#fff; color:#25343c; border-bottom:1px solid #e5e9ec; padding:16px 24px; min-height:76px; flex-wrap:wrap; gap:10px; }
+.lector-curso .lector-miga,.lector-curso .lector-progreso-label { color:#65747e; }
+.lector-curso .lector-miga strong { color:#25343c; }
+.lector-curso .lector-topbar-meta { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.lector-curso .lector-curso-datos { font-size:11px; }
+.lector-curso .lector-progreso-barra { height:4px; flex-shrink:0; background:#e5e9ec; }
+.lector-curso .lector-viewport { min-height:0; overflow:hidden; }
+.lector-curso .lector-viewport .lector-contenido { padding:clamp(18px,3vw,40px); display:block; background:transparent; color:#25343c; }
+.lector-curso .lector-slide { max-width:1120px; background:#fff; border:1px solid #e1e6ea; border-radius:18px; box-shadow:0 8px 30px #25343c08; padding:clamp(22px,3vw,42px); color:#25343c; }
+.lector-curso .lector-slide .lector-leccion-cabecera { min-height:0; height:auto; padding:0 0 24px; margin:0 0 28px; border-bottom:1px solid #e8ecef; }
+.lector-curso .lector-leccion-cabecera::after { display:none; }
+.lector-curso .lector-slide .lector-leccion-indice { color:#b32429; font-size:11px; letter-spacing:.1em; }
+.lector-curso .lector-slide .lector-leccion-cabecera h1 { color:#23333d; font-size:clamp(24px,2.6vw,36px); line-height:1.25; margin-top:12px; }
+.lector-curso .lector-slide-grid { align-items:start; gap:32px; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); }
+.lector-curso .lector-slide-texto .lector-informacion-subtema { color:#46555f; font-size:16px; line-height:1.85; font-weight:400; white-space:pre-line; margin:0; }
+.lector-curso .lector-slide-media { flex-direction:column; gap:20px; min-height:0; }
+.lector-curso .lector-slide-media .lector-media-recurso { height:auto; max-height:480px; aspect-ratio:auto; object-fit:contain; border-radius:12px; background:#f3f5f7; box-shadow:none; transform:none; }
+.lector-curso .lector-slide-media .lector-hero { display:none; }
+.lector-curso .lector-slide-grid:has(.lector-slide-media > .lector-hero:only-child) { grid-template-columns:1fr; }
+.lector-curso .lector-media-nivel { width:100%; }
+.lector-curso .lector-media-nivel img,.lector-curso .lector-media-nivel video { max-width:100%; height:auto; object-fit:contain; border-radius:10px; }
+.lector-curso .lector-media-nivel-etiqueta { color:#65747e; font-size:12px; margin-bottom:8px; }
+.lector-curso .lector-pasos { background:#fff; border-top:1px solid #dce3e7; padding:16px 24px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; flex-shrink:0; }
+.lector-curso .lector-pasos-info { display:grid; gap:4px; margin-right:auto; }
+.lector-curso .lector-progreso-navegacion { position:static; background:none; border:0; padding:0; color:#25343c; font-size:13px; }
+.lector-curso #lector-estado-leccion { color:#65747e; font-size:12px; }
+.lector-curso .lector-pasos-acciones { display:flex; gap:8px; flex-wrap:wrap; }
+.lector-curso .lector-pasos .lector-nav-btn { position:static; transform:none; width:auto; height:42px; min-width:80px; padding:10px 16px; border:1px solid #dce3e7; border-radius:8px; background:#fff; box-shadow:none; color:#354651; font-size:13px; }
+.lector-curso .lector-pasos .lector-nav-btn:hover:not(:disabled) { background:#f6f7f9; transform:none; box-shadow:none; }
+.lector-curso .lector-pasos .btn { min-height:42px; font-size:13px; }
+.lector-curso #lector-aviso-guardado { color:#b32429; font-size:13px; margin:0; }
+.lector-curso #lector-aviso-guardado:empty { display:none; }
+.lector-curso .lector-mensaje,.lector-curso .lector-aviso-examen { background:#fff; padding:32px; border:1px solid #dce3e7; border-radius:16px; }
+.lector-curso .lector-contenido h1,.lector-curso .lector-contenido p { color:#25343c; }
+.lector-curso #form-evaluacion { max-width:850px; }
+.lector-curso #form-evaluacion > div { background:#fff; border:1px solid #dce3e7; border-radius:12px; padding:24px; }
+.lector-curso #form-evaluacion label { color:#354651 !important; background:#f5f7f9 !important; }
+.lector-curso #form-evaluacion label:has(input:checked) { background:#fff0ef !important; outline:1px solid #c62828; }
+.lector-curso #form-evaluacion input { accent-color:#c62828; }
+@media(max-width:1100px) { .lector-curso .lector-slide-grid { grid-template-columns:1fr; } .lector-curso .lector-topbar-meta .lector-curso-datos { display:none; } }
+@media(max-width:760px) {
+ .lector-curso .lector-sidebar { flex-basis:auto; width:min(86vw,320px); }
+ .lector-curso .lector-contenido-main { height:100dvh; }
+ .lector-curso .lector-topbar { padding:12px; }
+ .lector-curso .lector-pasos { padding:12px; gap:10px; }
+ .lector-curso .lector-pasos-info { width:100%; }
+ .lector-curso .lector-pasos-acciones { width:100%; }
+ .lector-curso .lector-pasos-acciones > button { flex:1; }
+ .lector-curso .lector-viewport .lector-contenido { padding:12px; }
+ .lector-curso .lector-slide { padding:20px; }
+}
+
+/* Contraste del esquema y del lector con el menu plegado */
+.lector-curso .lector-tab.activo,
+.lector-curso .modulo-titulo-texto strong,
+.lector-curso .lector-topbar-meta strong { color:#25343c; }
+.lector-curso .modulo-titulo-texto strong { white-space:normal; overflow:visible; }
+.lector-curso .modulo-barra-fila .modulo-progreso,
+.lector-curso .tema-grupo-contador { color:#65747e; }
+.lector-curso .modulo-barra-fila .modulo-barra { background:#e8edf0; box-shadow:none; }
+.lector-curso .temas-contenedor { background:transparent; }
+.lector-curso .lector-titulo,.lector-curso .lector-tab,
+.lector-curso .modulo-titulo,.lector-curso .tema-grupo-titulo,
+.lector-curso .subtemas-lista .tema { text-shadow:none; }
+.lector-curso .tema-grupo.expandido .tema-grupo-titulo { border-bottom:0; }
+.lector-curso .modulo-chevron { color:#b32429; background:#fff0ef; }
+.lector-curso.sidebar-oculto .lector-contenido-main,
+.lector-curso.sidebar-oculto .lector-contenido { background:#f3f5f7; }
+.lector-curso.sidebar-oculto .lector-topbar { background:#fff; border-color:#e5e9ec; }
+.lector-curso .lector-certificado { color:#25343c; background:#fff; border:1px solid #dce3e7; }
+.lector-curso #evaluacion-error { color:#b32429; }
+/* El control del menu permanece dentro de la cabecera en movil */
+.lector-curso .lector-sidebar-toggle,
+.lector-curso.sidebar-oculto .lector-sidebar-toggle {
+  position:static; inset:auto; transform:none; flex:0 0 34px;
+  width:34px; height:34px; margin:0; box-shadow:none;
+  background:#fff; color:#b32429; border:1px solid #dce3e7;
+}
+.lector-curso .lector-pasos .lector-progreso-navegacion { text-align:left; }
+@media(max-width:760px) {
+  .lector-curso .lector-miga { gap:8px; width:100%; flex-basis:100%; }
+  .lector-curso .lector-topbar-meta { width:100%; justify-content:flex-end; }
+  .lector-curso .lector-progreso-label { display:inline; font-size:11px; }
+}
+.lector-curso .lector-topbar { flex-direction:row; flex-shrink:0; height:auto; }
+
+.lector-tiempo-restante{font-variant-numeric:tabular-nums;font-weight:700;color:#b91c1c;background:#fff1f2;border:1px solid #fecdd3;border-radius:999px;padding:5px 10px;white-space:nowrap}.lector-media-recurso,.lector-media-nivel-recursos video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;height:auto;object-fit:contain;background:#111;border-radius:14px}.lector-media-nivel-recursos{display:grid;gap:16px}.lector-media-nivel-recursos img{max-width:100%;height:auto;object-fit:contain;border-radius:14px}.lector-tiempo-restante.agotado{background:#fee2e2;color:#991b1b}.tiempo-card{font-variant-numeric:tabular-nums;font-weight:700}
+
+
+/* Rediseño de lecciones: indicadores simétricos y títulos limpios */
+.lector-curso .subtemas-lista { padding: 10px 0 8px 10px; }
+.lector-curso .subtemas-lista .tema {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  margin: 6px 0;
+  padding: 10px 12px 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: #fff;
+  color: #46555f;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.lector-curso .subtemas-lista .tema:hover { background:#f8fafb; border-color:#e3e9ed; transform:translateX(2px); }
+.lector-curso .subtemas-lista .tema.activo {
+  background: linear-gradient(90deg,#fff0ef 0%,#fff8f7 100%);
+  border: 1px solid #ffd4d1;
+  border-left: 4px solid #c62828;
+  color: #a61e24;
+  padding-left: 11px;
+}
+.lector-curso .tema-nombre { flex:1; min-width:0; font-size:13px; line-height:1.45; font-weight:500; }
+.lector-curso .tema-indicador {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:28px;
+  height:28px;
+  flex:0 0 28px;
+  border-radius:50%;
+  border:2px solid #cbd5dc;
+  background:#fff;
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  line-height:1;
+  box-sizing:border-box;
+}
+.lector-curso .tema-indicador.completo { background:#c62828; border-color:#c62828; box-shadow:0 0 0 4px #fff0ef; }
+.lector-curso .tema-indicador.pendiente::after { content:""; width:7px; height:7px; border-radius:50%; background:#cbd5dc; }
+.lector-curso .tema-grupo-nombre { display:flex; align-items:center; gap:10px; min-width:0; }
+.lector-curso .tema-grupo-nombre .tema-icono { flex:0 0 28px; }
+
+/* Cabecera del curso: duración y temporizador separados y legibles */
+.lector-curso .lector-curso-datos { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.lector-curso .lector-curso-datos > span { display:inline-flex; align-items:center; min-height:30px; padding:5px 10px; border:1px solid #e1e7eb; border-radius:8px; background:#f8fafb; }
+.lector-curso .lector-curso-datos #lector-tiempo-restante { background:#fff0ef; border-color:#ffc8c4; color:#b32429; border-radius:10px; }
+
+@media (max-width:760px) {
+  .lector-curso .subtemas-lista .tema { min-height:54px; padding:9px 10px; }
+  .lector-curso .tema-nombre { font-size:12px; }
+  .lector-curso .tema-indicador { width:26px; height:26px; flex-basis:26px; }
+}
