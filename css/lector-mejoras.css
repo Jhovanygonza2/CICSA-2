@@ -43,8 +43,11 @@
 .lector-curso .lector-slide-texto .lector-informacion-subtema { color:#46555f; font-size:16px; line-height:1.85; font-weight:400; white-space:pre-line; margin:0; }
 .lector-curso .lector-slide-media { flex-direction:column; gap:20px; min-height:0; }
 .lector-curso .lector-slide-media .lector-media-recurso { height:auto; max-height:480px; aspect-ratio:auto; object-fit:contain; border-radius:12px; background:#f3f5f7; box-shadow:none; transform:none; }
-.lector-curso .lector-slide-media .lector-hero { display:none; }
-.lector-curso .lector-slide-grid:has(.lector-slide-media > .lector-hero:only-child) { grid-template-columns:1fr; }
+.lector-curso .lector-portada-curso { width:100%; min-height:280px; aspect-ratio:4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:28px; box-sizing:border-box; border:1px solid #e1e6ea; border-radius:12px; background:linear-gradient(145deg,#f3f5f7,#fff0ef); text-align:center; }
+.lector-curso .lector-portada-curso svg { width:80px; height:80px; fill:none; stroke:#c62828; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.lector-curso .lector-portada-curso span { color:#65747e; font-size:13px; }
+.lector-curso .lector-portada-curso strong { color:#25343c; font-size:24px; line-height:1.35; overflow-wrap:anywhere; }
+.lector-curso .lector-slide-texto,.lector-curso .lector-slide-media { min-width:0; }
 .lector-curso .lector-media-nivel { width:100%; }
 .lector-curso .lector-media-nivel img,.lector-curso .lector-media-nivel video { max-width:100%; height:auto; object-fit:contain; border-radius:10px; }
 .lector-curso .lector-media-nivel-etiqueta { color:#65747e; font-size:12px; margin-bottom:8px; }

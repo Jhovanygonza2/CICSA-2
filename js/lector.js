@@ -236,14 +236,10 @@ function actualizarEstadoNavegacion() {
   btnSiguiente.disabled = cargandoLeccion || guardandoLeccion || evaluando || indice < 0;
   btnSiguiente.hidden = evaluando;
   btnSiguiente.setAttribute("aria-label", btnSiguiente.textContent);
-  const completar = document.getElementById("btn-completar-leccion");
   const completa = progresoCurso?.completadas.includes(leccionActualId);
-  completar.hidden = evaluando || indice < 0 || completa;
-  completar.disabled = cargandoLeccion || guardandoLeccion || !leccionDisponible;
-  completar.textContent = guardandoLeccion ? "Guardando…" : "Completar y continuar";
   document.getElementById("lector-estado-leccion").textContent = evaluando
     ? (leccionActualId === "examen" ? "Examen final" : "Evaluación del curso")
-    : completa ? "Lección completada" : "Marca la lección al terminar de estudiarla";
+    : completa ? "Lección completada" : "Pulsa Siguiente al terminar de estudiar la lección";
 }
 
 function siguienteLeccion() {
@@ -401,11 +397,18 @@ async function mostrarLeccion(idLeccion) {
   const moduloActual = curso?.modulos?.find((m) => (m.temas || []).some((t) => (t.subtemas || []).some((s) => s.id === idLeccion))) || null;
   // En la vista de una lección solo se muestra el recurso propio de esa lección.
   // Los videos del módulo o del tema no se repiten en todas las lecciones.
+  const portadaCurso = obtenerUrlMediaSegura(curso?.thumbnail);
   const marcoMedia = urlMedia
     ? tipoMedia === "video"
       ? `<video class="lector-media-recurso" src="${urlMedia}" controls preload="metadata" playsinline></video>`
       : `<img class="lector-media-recurso" src="${urlMedia}" alt="Imagen de la lección" loading="lazy" />`
-    : `<div class="lector-hero" aria-hidden="true"><span>Conectando ideas, personas y tecnología</span></div>`;
+    : portadaCurso
+      ? `<img class="lector-media-recurso" src="${portadaCurso}" alt="Portada de ${escaparHtml(curso.nombre)}" loading="lazy" />`
+      : `<div class="lector-portada-curso">
+          <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 22C29 15 17 15 8 19v43c11-4 22-3 32 4 10-7 21-8 32-4V19c-9-4-21-4-32 3Zm0 0v44M18 30c5-1 10 0 15 3M18 41c5-1 10 0 15 3M48 33c5-3 10-4 15-3M48 44c5-3 10-4 15-3"/></svg>
+          <span>${escaparHtml(curso.categoria || "Capacitación")}</span>
+          <strong>${escaparHtml(curso.nombre)}</strong>
+        </div>`;
 
   contenidoTema.innerHTML = `
     <div class="lector-slide">
@@ -684,8 +687,7 @@ function actualizarEstadoSidebar() {
 }
 
 btnAnterior?.addEventListener("click", retroceder);
-btnSiguiente?.addEventListener("click", siguienteLeccion);
-document.getElementById("btn-completar-leccion")?.addEventListener("click", avanzar);
+btnSiguiente?.addEventListener("click", () => leccionDisponible ? avanzar() : siguienteLeccion());
 document.querySelector('.lector-buscador input')?.addEventListener('input', filtrarEsquema);
 btnVolver?.addEventListener("click", () => (window.location.href = "dashboard.html"));
 btnToggleSidebar?.addEventListener("click", () => {
